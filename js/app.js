@@ -11,6 +11,14 @@ var platzom = function (str){
   if(str.toLowerCase().startsWith('z')){
     translation += 'pe';
   }
+  //si la palabra traducida tiene 10 o más letras
+  //Se debe partir a la mitad y unir con guión del medio
+  const length = translation.length;
+  if(translation.length >=10){
+    const firsHalf= translation.slice(0,Math.round(length/2));
+    const secondHalf = translation.slice( Math.round(length/2))
+    translation =  `${firsHalf}-${secondHalf}`
+  }
   return translation;
 }
 
@@ -20,7 +28,9 @@ var cargaPagina = function (){
   //
   let palabra = platzom("caminar");
   console.log(platzom("Zorro"));
-  console.log(palabra)
+  console.log(platzom("Zarpar"))
+  console.log(platzom("abecedario"))
+
 
 }
 
