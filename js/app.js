@@ -1,6 +1,6 @@
 
 
-var platzom = function (str){
+const platzom = function (str){
 
   let translation = str;
   //si la palabra termia en "ar", se le quitan
@@ -19,19 +19,41 @@ var platzom = function (str){
     const secondHalf = translation.slice( Math.round(length/2))
     translation =  `${firsHalf}-${secondHalf}`
   }
+    //Si la palabra original es un palindromo
+    //ninguna regla anterior cuenta y se devuelve
+    //la misma palabra intercalando mayúsculas y minúsculas
+  if(str == reverse(str)){
+    return aMayusculas(str);
+  }
   return translation;
+
 }
-
-var cargaPagina = function (){
-  // let btn = document.getElementById('enviaInfo');
-  // btn.addEventListener("click",platzom(valueString))
-  //
-  let palabra = platzom("caminar");
-  console.log(platzom("Zorro"));
-  console.log(platzom("Zarpar"))
-  console.log(platzom("abecedario"))
-
-
+const aMayusculas = (str) => {
+  const length = str.length;
+  let translation = '';
+  let capitalize = true;
+  for(let i = 0 ; i< length ; i++){
+    const char = str.charAt(i);
+    translation += capitalize ? char.toUpperCase(): char.toLowerCase()
+    capitalize = !capitalize;
+  }
+   return translation;
+}
+const aMinusculas = (str) =>{
+  return str.toLowerCase();
+}
+const reverse = (str)=>{
+  return  str.split('').reverse().join('')
+}
+var translate = function(){
+  let stringValue  = document.getElementById('str').value;
+  let palabraTraducida = platzom(stringValue);
+  console.log(palabraTraducida);
+  document.getElementById('contenedor').innerHTML = palabraTraducida;
+}
+const cargaPagina = function (){
+  let btn = document.getElementById('enviaInfo');
+  btn.addEventListener("click", translate);
 }
 
 window.onload =function (){
