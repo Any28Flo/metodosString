@@ -11,9 +11,12 @@ var platzom = function (str){
 }
 
 var cargaPagina = function (){
-  console.log("hola mundo");
-  //let string = document.getElementById('str').val;
-  console.log(string);
+  // let btn = document.getElementById('enviaInfo');
+  // btn.addEventListener("click",platzom(valueString))
+  //
+  let palabra = platzom("caminar");
+  console.log(palabra)
+
 }
 
 window.onload =function (){
